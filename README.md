@@ -12,8 +12,8 @@ This is the implementation of my thesis. Implemented on Python 3.7 and Pytorch 1
 
 Conda environment settings:
 ```bash
-conda create -n hsnet python=3.7
-conda activate hsnet
+conda create -n segmentation python=3.7
+conda activate segmentation
 
 conda install pytorch=1.5.1 torchvision cudatoolkit=10.1 -c pytorch
 conda install -c conda-forge tensorflow
@@ -66,6 +66,13 @@ Create a directory '../Datasets_HSN' for the above three few-shot segmentation d
 >                 --logpath "your_experiment_name"
 > ```
 > * Training takes approx. 3 days until convergence (trained with four 2080 Ti GPUs).
+
+> ### Data preparation
+> ``` bash
+> python train.py
+
+
+
 
 > ### Babysitting training:
 > Use tensorboard to babysit training progress:
