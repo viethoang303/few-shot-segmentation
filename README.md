@@ -3,10 +3,6 @@
 
 This is the implementation of my thesis. Implemented on Python 3.7 and Pytorch 1.5.1.
 
-<p align="middle">
-    <img src="data/assets/architecture.png">
-</p>
-
 ## Requirements
 
 - Python 3.7
@@ -23,56 +19,19 @@ conda install pytorch=1.5.1 torchvision cudatoolkit=10.1 -c pytorch
 conda install -c conda-forge tensorflow
 pip install tensorboardX
 ```
-## Preparing Few-Shot Segmentation Datasets
-Download following datasets:
-
-> #### 1. PASCAL-5<sup>i</sup>
-> Download PASCAL VOC2012 devkit (train/val data):
-> ```bash
-> wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
-> ```
-> Download PASCAL VOC2012 SDS extended mask annotations from our [[Google Drive](https://drive.google.com/file/d/10zxG2VExoEZUeyQl_uXga2OWHjGeZaf2/view?usp=sharing)].
-
-> #### 2. COCO-20<sup>i</sup>
-> Download COCO2014 train/val images and annotations: 
-> ```bash
-> wget http://images.cocodataset.org/zips/train2014.zip
-> wget http://images.cocodataset.org/zips/val2014.zip
-> wget http://images.cocodataset.org/annotations/annotations_trainval2014.zip
-> ```
-> Download COCO2014 train/val annotations from our Google Drive: [[train2014.zip](https://drive.google.com/file/d/1cwup51kcr4m7v9jO14ArpxKMA4O3-Uge/view?usp=sharing)], [[val2014.zip](https://drive.google.com/file/d/1PNw4U3T2MhzAEBWGGgceXvYU3cZ7mJL1/view?usp=sharing)].
-> (and locate both train2014/ and val2014/ under annotations/ directory).
-
-> #### 3. FSS-1000
-> Download FSS-1000 images and annotations from our [[Google Drive](https://drive.google.com/file/d/1Fn-cUESMMF1pQy8Xff-vPQvXJdZoUlP3/view?usp=sharing)].
 
 Create a directory '../Datasets_HSN' for the above three few-shot segmentation datasets and appropriately place each dataset to have following directory structure:
 
     ../                         # parent directory
-    ├── ./                      # current (project) directory
-    │   ├── common/             # (dir.) helper functions
-    │   ├── data/               # (dir.) dataloaders and splits for each FSSS dataset
-    │   ├── model/              # (dir.) implementation of Hypercorrelation Squeeze Network model 
-    │   ├── README.md           # intstruction for reproduction
-    │   ├── train.py            # code for training HSNet
-    │   └── test.py             # code for testing HSNet
-    └── Datasets_HSN/
-        ├── VOC2012/            # PASCAL VOC2012 devkit
-        │   ├── Annotations/
-        │   ├── ImageSets/
-        │   ├── ...
-        │   └── SegmentationClassAug/
-        ├── COCO2014/           
-        │   ├── annotations/
-        │   │   ├── train2014/  # (dir.) training masks (from Google Drive) 
-        │   │   ├── val2014/    # (dir.) validation masks (from Google Drive)
-        │   │   └── ..some json files..
-        │   ├── train2014/
-        │   └── val2014/
-        └── FSS-1000/           # (dir.) contains 1000 object classes
-            ├── abacus/   
-            ├── ...
-            └── zucchini/
+    ├── ./                  # current (project) directory
+    ├── common/             # (dir.) helper functions
+    ├── data_loader/        # (dir.) dataloaders for dataset
+    ├── model/              # (dir.) implementation of proposed model 
+    ├── README.md           # intstruction for reproduction
+    ├── train.py            # code for training 
+    └── test.py             # code for testing
+    
+
 
 ## Training
 > ### 1. PASCAL-5<sup>i</sup>
