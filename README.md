@@ -7,8 +7,6 @@ This is the implementation of my thesis. Implemented on Python 3.7 and Pytorch 1
     <img src="data/assets/architecture.png">
 </p>
 
-For more information, check out project [[website](http://cvlab.postech.ac.kr/research/HSNet/)] and the paper on [[arXiv](https://arxiv.org/abs/2104.01538)].
-
 ## Requirements
 
 - Python 3.7
