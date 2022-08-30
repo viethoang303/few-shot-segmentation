@@ -34,44 +34,11 @@ Create a directory '../Datasets_HSN' for the above three few-shot segmentation d
 
 
 ## Training
-> ### 1. PASCAL-5<sup>i</sup>
-> ```bash
-> python train.py --backbone {vgg16, resnet50, resnet101} 
->                 --fold {0, 1, 2, 3} 
->                 --benchmark pascal
->                 --lr 1e-3
->                 --bsz 20
->                 --logpath "your_experiment_name"
-> ```
-> * Training takes approx. 2 days until convergence (trained with four 2080 Ti GPUs).
-
-
-> ### 2. COCO-20<sup>i</sup>
-> ```bash
-> python train.py --backbone {resnet50, resnet101} 
->                 --fold {0, 1, 2, 3} 
->                 --benchmark coco 
->                 --lr 1e-3
->                 --bsz 40
->                 --logpath "your_experiment_name"
-> ```
-> * Training takes approx. 1 week until convergence (trained four Titan RTX GPUs).
-
-> ### 3. FSS-1000
-> ```bash
-> python train.py --backbone {vgg16, resnet50, resnet101} 
->                 --benchmark fss 
->                 --lr 1e-3
->                 --bsz 20
->                 --logpath "your_experiment_name"
-> ```
-> * Training takes approx. 3 days until convergence (trained with four 2080 Ti GPUs).
-
-> ### Data preparation
+> ### Training process
 > ``` bash
-> python train.py
+> python train.py --nshot {1, 5}
 
-
+> * Training takes approx (trained with four 2080 Ti GPUs).
 
 
 > ### Babysitting training:
@@ -83,48 +50,10 @@ Create a directory '../Datasets_HSN' for the above three few-shot segmentation d
 
 
 ## Testing
-
-> ### 1. PASCAL-5<sup>i</sup>
-> Pretrained models with tensorboard logs are available on our [[Google Drive](https://drive.google.com/drive/folders/1z4KgjgOu--k6YuIj3qWrGg264GRcMis2?usp=sharing)].
 > ```bash
-> python test.py --backbone {vgg16, resnet50, resnet101} 
->                --fold {0, 1, 2, 3} 
->                --benchmark pascal
->                --nshot {1, 5} 
->                --load "path_to_trained_model/best_model.pt"
+> python test.py --nshot {1, 5} --load "path_to_trained_model/best_model.pt"
 > ```
 
-
-> ### 2. COCO-20<sup>i</sup>
-> Pretrained models with tensorboard logs are available on our [[Google Drive](https://drive.google.com/drive/folders/1WpwmCQzxTWhJD5aLQhsgJASaoxxqmFUk?usp=sharing)].
-> ```bash
-> python test.py --backbone {resnet50, resnet101} 
->                --fold {0, 1, 2, 3} 
->                --benchmark coco 
->                --nshot {1, 5} 
->                --load "path_to_trained_model/best_model.pt"
-> ```
-
-> ### 3. FSS-1000
-> Pretrained models with tensorboard logs are available on our [[Google Drive](https://drive.google.com/drive/folders/1JOaaJknGwsrSEPoLF3x6_lDiy4XfAe99?usp=sharing)].
-> ```bash
-> python test.py --backbone {vgg16, resnet50, resnet101} 
->                --benchmark fss 
->                --nshot {1, 5} 
->                --load "path_to_trained_model/best_model.pt"
-> ```
-
-> ### 4. Evaluation *without support feature masking* on PASCAL-5<sup>i</sup>
-> * To reproduce the results in Tab.1 of our main paper, **COMMENT OUT line 51 in hsnet.py**: support_feats = self.mask_feature(support_feats, support_mask.clone())
-> 
-> Pretrained models with tensorboard logs are available on our [[Google Drive](https://drive.google.com/drive/folders/18YWMCePIrza194pZvVMqQBuYqhwBmJwd?usp=sharing)].
-> ```bash
-> python test.py --backbone resnet101 
->                --fold {0, 1, 2, 3} 
->                --benchmark pascal
->                --nshot {1, 5} 
->                --load "path_to_trained_model/best_model.pt"
-> ```
 
 
 ## Visualization
